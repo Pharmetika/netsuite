@@ -15,16 +15,16 @@ module NetSuite
              :shipping_tax1_rate, :shipping_tax2_rate, :source, :status, :sub_total,
              :total, :tracking_numbers, :tran_date, :tran_id, :order_status, :use_item_cost_as_transfer_cost
 
-      record_refs :transfer_location, :shipping_tax_code, :subsidiary, :shipping_address,
+      record_refs :transfer_location, :shipping_tax_code, :subsidiary,
                   :ship_method, :employee, :handling_tax_code,
                   :location, :custom_form, :department, :klass, :ship_address_list
 
+      field :shipping_address,    Address
       field :custom_field_list,   CustomFieldList
       field :item_list,           TransferOrderItemList
 
       attr_reader :internal_id
       attr_accessor :external_id
-      attr_accessor :search_joins
 
       def initialize(attributes = {})
         @internal_id = attributes.delete(:internal_id) || attributes.delete(:@internal_id)

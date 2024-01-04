@@ -5,7 +5,7 @@ describe NetSuite::Records::CashRefundItem do
 
   it 'has all the right fields' do
     [
-      :amount
+      :amount, :gross_amt, :rate, :quantity, :is_taxable, :order_line, :line, :description
     ].each do |field|
       expect(item).to have_field(field)
     end
@@ -13,7 +13,11 @@ describe NetSuite::Records::CashRefundItem do
 
   it 'has all the right record refs' do
     [
-      :item, :klass
+      :department,
+      :item,
+      :klass,
+      :location,
+      :price
     ].each do |record_ref|
       expect(item).to have_record_ref(record_ref)
     end
